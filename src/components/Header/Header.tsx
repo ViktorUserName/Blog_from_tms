@@ -6,7 +6,7 @@ import ava from '../../img/ava.svg';
 
 const Header: React.FC = () => {
     return (
-        <main>
+        <header>
                 <div className="header-content">
                     <nav className="header-burger">
                         <div className="header-burger-cont">
@@ -30,7 +30,7 @@ const Header: React.FC = () => {
                         </div>
                     </div>
                 </div>
-        </main>
+        </header>
     );
 };
 

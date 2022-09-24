@@ -1,0 +1,43 @@
+@import '../../mixin.scss';
+
+.post {
+    &-content h1 {
+        @include title; 
+        font-size: 56px;
+        line-height: 80px;
+        padding: 72px 0 47px 0;
+    }
+    &__nav {
+        position: relative;
+        
+        &::after {
+            @include separator;
+            bottom: -24px;
+        }
+        &-ul {
+            display: flex;
+            flex-direction: row;
+            max-width: 350px;
+            justify-content: space-around;
+            // gap: 120px;
+            & li a {
+            @include subtitle;
+            font-size: 16px;
+            line-height: 24px;
+            padding-bottom: 24px;
+            // &::before {
+            //     content: '';
+            //     width: 15px;
+            // }
+            // &::after {
+            //     content: '';
+            //     width: 15px;
+            // }
+            &:hover {
+                border-bottom: 2px solid #313037;
+            }
+        }
+        }
+    }
+    
+}
