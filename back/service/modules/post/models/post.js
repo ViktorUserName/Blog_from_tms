@@ -7,6 +7,7 @@ const postSchema = new Schema ({
     mainText: String,
     date: String,
     like: Number,
+    dislike: Number,
     comments: Array
 });
 
