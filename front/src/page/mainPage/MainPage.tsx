@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import PostList, { IPost } from '../../components/PostList/PostList';
 import s from './MainPage.module.scss';
 import axios from 'axios';
+import MainPageNav from './components/MainPageNav';
 
 const MainPage = () => {
     const [post, setPost] = useState<IPost[]>([{
-        like:0, dislike: 0, comments:[]
+         like:0, dislike: 0, comments:[]
     }])
    
     const getPosts = async () => {
@@ -17,19 +18,14 @@ const MainPage = () => {
     useEffect(() => {
         getPosts()
     }, [])
+
     return (
         <div className={s.main}>
             <div className="wrapper">
                 <h1 className={s.mainH1}>
                     Blog
                 </h1>
-                <nav className={s.mainNav}>
-                    <ul className={s.mainNavUl}>
-                        <li><a href="#">All</a></li>
-                        <li><a href="#">My favorites</a></li>
-                        <li><a href="#">Popular</a></li>
-                    </ul>
-                </nav>
+                <MainPageNav navClassName={s.mainNav} ulClassName={s.mainNavUl}/>
                 <PostList posts={post}/>
             </div>
         </div>

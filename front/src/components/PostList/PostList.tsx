@@ -1,30 +1,43 @@
 import { title } from 'process';
 import React, { useState } from 'react';
-import Post from '../Post/Post'
+import { Link, LinkProps } from 'react-router-dom';
+import PostEnam from '../Post/PostEnam';
+import s from './PostList.module.scss'
 
 export interface IPost {
+    id?: number,
     title?: string,
     date?: string,
-    comments:[],
+    img?: string,
+    comments?:[],
     like?: number,
-    dislike?: number
+    dislike?: number,
 }
+
 interface IpostListProps {
-    posts?: IPost[]
+    posts?: IPost[],
+    // to: LinkProps
+    
 }
 
 const PostList: React.FC<IpostListProps> = ({
-    posts=[]
+    posts=[],
+    // to
+    
+    
 }) => {
 
     return (
-        <div>
+        <div className={s.listCont}>
             {
                 posts.map((post) => {
                     return (
-                        <Post 
-                            post={post}
-                        />
+                        <>
+                        {/* <Link key={post.id} to={`/articles/${post.id}`}/> */}
+                            <PostEnam post={post}/>
+                        {/* <Link/> */}
+                        {/* ///Property 'to' is missing in type '{}' but required in type 'LinkProps'.ts(2741) */}
+                        </>
                     )
                 })
             }

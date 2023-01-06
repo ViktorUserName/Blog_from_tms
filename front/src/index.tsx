@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Header from './components/Header/Header';
+import App from './components/App/App';
 import './index.scss';
-import MainPage from './page/mainPage/MainPage';
 
 
 
@@ -11,8 +10,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Header/>
-    <MainPage/>
+    <App/>
   </React.StrictMode>
 );
 
