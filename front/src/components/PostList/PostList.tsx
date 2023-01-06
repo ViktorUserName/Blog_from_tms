@@ -1,19 +1,33 @@
 import { title } from 'process';
 import React, { useState } from 'react';
-import Post, {Ipost} from '../Post/Post'
+import Post from '../Post/Post'
 
-interface IpostProps {
-    postConfig: Ipost[]
+export interface IPost {
+    title?: string,
+    date?: string,
+    comments:[],
+    like?: number,
+    dislike?: number
+}
+interface IpostListProps {
+    posts?: IPost[]
 }
 
-const PostList: React.FC<IpostProps> = (postConfig=[]) => {
+const PostList: React.FC<IpostListProps> = ({
+    posts=[]
+}) => {
 
     return (
         <div>
             {
-                postConfig.map((post) =>
-                    <Post key={post.title} title={post.title} date={post.date} like={post.like} dislike={post.dislike}/>
-                )}
+                posts.map((post) => {
+                    return (
+                        <Post 
+                            post={post}
+                        />
+                    )
+                })
+            }
         </div>
     );
 };

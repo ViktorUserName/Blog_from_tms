@@ -1,22 +1,20 @@
 import React from 'react';
+import { IPost } from '../PostList/PostList';
 
-export interface Ipost {
-    title: string,
-    date: string,
-    like: number,
-    dislike: number
+interface IPostProps {
+    post: IPost
 }
 
-const Post: React.FC<Ipost> = ({
-    title, date, like, dislike
+const Post: React.FC<IPostProps> = ({
+    post
 }) => {
 
     return (
         <div>
             <img src="" alt="" />
-            <p>{date}</p>
-            <h3>{title}</h3>
-            <div>{like}, {dislike}</div>
+            <p>{post.date}</p>
+            <h3>{post.title}</h3>
+            <div>{post.like}, {post.dislike}</div>
         </div>
     );
 };

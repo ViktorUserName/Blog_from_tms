@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import PostList from '../../components/PostList/PostList';
+import PostList, { IPost } from '../../components/PostList/PostList';
 import s from './MainPage.module.scss';
 import axios from 'axios';
 
 const MainPage = () => {
-    const [postInfo, setPostInfo] = useState([] || {})
+    const [post, setPost] = useState<IPost[]>([{
+        like:0, dislike: 0, comments:[]
+    }])
+   
+    const getPosts = async () => {
+        const response = await axios.get(`http://localhost:3001/api/post`)
+            const newPostInfo = response.data;
+            setPost(newPostInfo)
+    }
 
     useEffect(() => {
-        const loadInfo = async () => {
-            const response = await axios.get(`http://localhost:3001/api/post`)
-            const newPostInfo = response.data;
-            setPostInfo(newPostInfo)
-        }
+        getPosts()
     }, [])
     return (
         <div className={s.main}>
@@ -26,7 +30,7 @@ const MainPage = () => {
                         <li><a href="#">Popular</a></li>
                     </ul>
                 </nav>
-                <PostList IpostProps={postInfo}/>
+                <PostList posts={post}/>
             </div>
         </div>
     );
