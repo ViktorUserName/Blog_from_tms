@@ -14,11 +14,6 @@ app.use(express.json());
 app.use(cors(corsOptions));
 
 app.use('/api/post', postRouter)
-// app.get('/api/post/:id', postController.getPostByName)
-// app.put('/api/post/:id/like', postController.putLike)
-// app.put('/api/post/:id/dislike', postController.putDislike)
-
-
 
 
 app.use((request, response, next) => {

@@ -1,0 +1,3 @@
+db.temp.find({name: {$exists:true}}).forEach( function(x) {
+    db.temp.update({_id: x._id}, {$set: {name: x.name.toString()}});
+});

@@ -1,0 +1,27 @@
+@import '../../mixin.scss';
+
+.main {
+    max-width:  352px;
+    & > p {
+        @include simple;
+        line-height: 24px;
+        padding-top: 15px;
+    }
+    & > h3 {
+        @include subtitle;
+        padding: 8px 0 29px 0;
+
+    }
+    &LD{
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+        & > div {
+            display: flex;
+            gap: 8px;
+            & > button {
+                border: none;
+            }
+        }
+    }
+}
