@@ -20,6 +20,7 @@ exports.getPostByName = async function(request, response){
 
 exports.putLike = async function(request, response) {
     const { id } = request.params;
+    // const id = request.id
 
     await Post.updateOne({ id }, {
         $inc: {

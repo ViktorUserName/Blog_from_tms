@@ -1,8 +1,8 @@
 import { title } from 'process';
 import React, { useState } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
-import PostEnam from '../Post/PostEnam';
-import s from './PostList.module.scss'
+import PostEnam from '../Post/PostList';
+import s from './PostConteiner.module.scss'
 
 export interface IPost {
     id?: number,
@@ -12,19 +12,16 @@ export interface IPost {
     comments?:[],
     like?: number,
     dislike?: number,
+    to?: LinkProps
 }
 
 interface IpostListProps {
     posts?: IPost[],
-    // to: LinkProps
-    
+      
 }
 
 const PostList: React.FC<IpostListProps> = ({
     posts=[],
-    // to
-    
-    
 }) => {
 
     return (
@@ -33,10 +30,9 @@ const PostList: React.FC<IpostListProps> = ({
                 posts.map((post) => {
                     return (
                         <>
-                        {/* <Link key={post.id} to={`/articles/${post.id}`}/> */}
-                            <PostEnam post={post}/>
-                        {/* <Link/> */}
-                        {/* ///Property 'to' is missing in type '{}' but required in type 'LinkProps'.ts(2741) */}
+                            <Link key={post.id} to={`${post.id}`}>
+                                <PostEnam post={post}/>
+                            </Link>
                         </>
                     )
                 })

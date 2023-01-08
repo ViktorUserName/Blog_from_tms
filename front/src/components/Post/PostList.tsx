@@ -1,6 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { IPost } from '../PostList/PostList';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { IPost } from '../PostList/PostConteiner';
+import axios from 'axios';
 import s from './Post.module.scss'
 
 const likeSVG = (<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,13 +18,40 @@ interface IPostProps {
 const PostEnam: React.FC <IPostProps> = ({
     post
 }) => {
+    // const [postInfo, setPostInfo] = useState<IPost>({
+    //     like: 0, dislike: 0
+    // });
+
+    //  postId = Number(postId)
+    
+    
+    
+    
+    // useEffect( () => {
+    //     const loadInfo = async () => {
+    //         const response = await axios.get(`http://localhost:3001/api/post/${postId}`);
+    //         const newPostInfo = response.data;
+    //         setPostInfo(newPostInfo);
+    //     }
+    // }, []);
+    
+
+    // const addLike = async () => {
+    //     const response = await axios.put(`http://localhost:3001/api/post/${postId}/like`);
+    //     console.log(response)
+    //     console.log(postId);
+    //     const updatePostInfo = response.data;
+    //     setPostInfo(updatePostInfo);
+    // }
+
+
     return ( 
             <div className={s.main}>
                 <img src={post.img} alt="" />
                 <p>{post.date}</p>
                 <h3>{post.title}</h3>
                 <div className={s.mainLD}>
-                    <div><button>{likeSVG}</button> {post.like} </div>
+                <div><button>{likeSVG} {post.like}</button></div>
                     <div><button>{dislikeSVG}</button> {post.dislike}</div>
                 </div>
             </div>
